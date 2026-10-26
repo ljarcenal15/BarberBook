@@ -23,7 +23,8 @@ Use only the clean schema for a real deployment. Do not import `database/demo_tr
 2. In cPanel **File Manager**, open the domain's document root (often `public_html`).
 3. Create a folder named `barberbook` if you want the site at `/barberbook/`.
 4. Upload the project files and folders into that folder, preserving the structure. `index.php`, `book.php`, `.htaccess`, and `classes/` should be directly inside the application folder.
-5. Keep the provided `.htaccess` files. Apache overrides must be enabled by the host.
+5. Delete the ZIP from `public_html` after extraction so visitors cannot download the source archive.
+6. Keep the provided `.htaccess` files. Apache overrides must be enabled by the host.
 
 The booking page will be `https://YOUR-DOMAIN/barberbook/book.php` if deployed in that subfolder, or `https://YOUR-DOMAIN/book.php` if deployed at the document root.
 
