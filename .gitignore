@@ -8,6 +8,8 @@ Desktop.ini
 .env
 .env.*
 !.env.example
+/config.local.php
+/barberbook-config.php
 
 # Database exports may contain private customer information
 *.sql.gz

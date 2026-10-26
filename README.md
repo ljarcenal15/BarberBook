@@ -26,7 +26,7 @@ The first visit to `register.php` creates the shop's initial Admin account. Afte
 
 1. Place the project folder in `C:\xampp\htdocs\MIDTERM`.
 2. Start Apache and MySQL in the XAMPP Control Panel.
-3. For local XAMPP, the default connection is `localhost`, `barberbook_db`, user `root`, and an empty password. For hosting, set the environment variables listed in `.env.example`; `APP_ENV=production` requires all database credentials to be present.
+3. For local XAMPP, the default connection is `localhost`, `barberbook_db`, user `root`, and an empty password. For production, place a private `barberbook-config.php` outside the web root as described in [DEPLOYMENT.md](DEPLOYMENT.md); never commit credentials.
 4. Open `http://localhost/MIDTERM/`.
 5. Customers can book at `http://localhost/MIDTERM/book.php` without signing in.
 6. Open **Transactions** to initialize its payment ledger.

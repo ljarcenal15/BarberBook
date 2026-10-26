@@ -9,11 +9,19 @@ class Database
 
     public function __construct()
     {
-        $environment = getenv('APP_ENV') ?: 'local';
-        $host = getenv('DB_HOST');
-        $dbName = getenv('DB_NAME');
-        $username = getenv('DB_USER');
-        $password = getenv('DB_PASS');
+        $externalConfigPath = dirname(__DIR__, 2) . DIRECTORY_SEPARATOR . 'barberbook-config.php';
+        $localConfigPath = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'config.local.php';
+        $configPath = is_file($externalConfigPath) ? $externalConfigPath : $localConfigPath;
+        $fileConfig = is_file($configPath) ? require $configPath : [];
+        if (!is_array($fileConfig)) {
+            throw new RuntimeException('Database configuration file must return an array.');
+        }
+
+        $environment = getenv('APP_ENV') ?: ($fileConfig['environment'] ?? 'local');
+        $host = getenv('DB_HOST') ?: ($fileConfig['host'] ?? null);
+        $dbName = getenv('DB_NAME') ?: ($fileConfig['database'] ?? null);
+        $username = getenv('DB_USER') ?: ($fileConfig['username'] ?? null);
+        $password = getenv('DB_PASS') ?: ($fileConfig['password'] ?? null);
 
         if ($environment === 'production' && (!$host || !$dbName || !$username || !$password)) {
             throw new RuntimeException('Production database environment variables are not configured.');
