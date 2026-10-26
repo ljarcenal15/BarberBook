@@ -1,0 +1,19 @@
+# Local editor and operating-system files
+.vscode/
+.idea/
+Thumbs.db
+Desktop.ini
+
+# Local credentials and configuration
+.env
+.env.*
+!.env.example
+
+# Database exports may contain private customer information
+*.sql.gz
+*.dump
+database/local-*.sql
+
+# Local logs and temporary files
+*.log
+*.tmp
